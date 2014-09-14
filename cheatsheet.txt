@@ -1,0 +1,552 @@
+            Seidenberg Institute for Computing Innovation 2011
+                              Lab Manual
+
+2.1	Creating a Ubuntu Virtual Machine	4
+  http://community.seidenberg.pace.edu/files/sici2011/resources.exe
+  
+2.5	Updating apt-get Package Information	15
+  su  -
+  apt-get  update
+  
+4.2	Launching the VM	20
+  http://community.seidenberg.pace.edu/files/sici2011/ubuntu1.exe
+
+4.3	Running Command sudo without Needing Password	22
+  sudo  visudo
+  user  ALL=(ALL)  NOPASSWD: ALL
+  
+4.4	Adding Menu Item “Open in Terminal” to File Browser Popup Menu	23
+  sudo  apt-get  install nautilus-open-terminal
+  
+4.5	Installing 7z	24
+  sudo  apt-get  install  p7zip-full
+  
+4.6.1	Installing Java JDK	24
+  ./jdk-6u25-nb-7_0-linux-ml.sh
+  rm  jdk-6u25-nb-7_0-linux-ml.sh
+  echo  $PATH
+  gedit  ~/.bashrc
+  export  JAVA_HOME=/home/user/jdk1.6.0_25
+  export  PATH=$JAVA_HOME/bin:$PATH
+  source   ~/.bashrc
+  java  -version
+  javac
+  
+4.6.2	Installing JRE Plugin for Firefox	30
+  sudo gksu   /usr/bin/software-properties-gtk
+  sudo  apt-get  install   sun-java6-plugin
+  http://javatester.org/enabled.html
+  
+4.6.1	Testing Java Commands javac and java	33
+  gedit  Hello.java
+  
+  package  sici;
+  public class Hello {
+    public static void main(String[] args) {
+      System.out.println("Welcome to Seidenberg Institute of Computing Innovation 2011!");
+    }
+  }
+
+  javac  -d .  Hello.java
+  java  sici.Hello
+  
+4.6.2	Testing NetBeans v7	34
+  sici.Hello
+  System.out.println("Welcome!");
+  
+4.7.1	Installing Tomcat	38
+  tar  xvzf  apache-tomcat-7.0.12.tar.gz  -C  .
+  rm  apache-tomcat-7.0.12.tar.gz
+  mv  apache-tomcat-7.0.12  tomcat
+  gedit  ~/.bashrc
+  alias  tomcat-start='bash  ~/tomcat/bin/startup.sh'   # Start Tomcat
+  alias  tomcat-stop='bash  ~/tomcat/bin/shutdown.sh'   # Shutdown Tomcat
+  source   ~/.bashrc
+
+4.8	Installing MySQL Database Server	41
+  sudo  apt-get  install  mysql-server
+  mysql  -u root  -p123456
+  create  database  test;
+  show databases;
+  use test;
+  show tables;
+  quit;
+  
+4.9	Deploying Sample Tomcat Web Applications	42
+  start-tomcat
+  cd   ~/tomcat/webapps
+  cd  bookstoreJsp
+  more  books.sql
+  mysql  -u root  -p123456  <  books.sql
+  cd ../survey
+  mysql  -u root  -p123456  <  survey.sql
+  more  survey.sql
+  http://localhost:8080/survey
+  http://localhost:8080/bookstoreJsp
+  http://localhost:8080/demo
+  http://community.seidenberg.pace.edu:8080/demo/
+  
+4.10.1	Installing Apache 2	45
+  sudo  apt-get  install  apache2
+  sudo  gedit   /etc/apache2/httpd.conf
+  ServerName    localhost
+  ln -s /var/www   www
+  http://localhost
+  sudo  apache2ctl  restart
+  
+4.10.2	Installing PHP	47
+  sudo  apt-get  install  php5  libapache2-mod-php5
+  sudo  apache2ctl  restart
+  sudo chown -R user /var/www
+  gedit  ~/www/testphp.php
+  <?php  phpinfo(); ?>
+  http://localhost/testphp.php
+  
+4.11.1	Eclipse Setup	48
+  tar  xvzf  eclipse-jee-helios-SR1-linux-gtk.tar.gz  -C  .
+  rm  eclipse-jee-helios-SR1-linux-gtk.tar.gz
+  
+4.11.2	Developing a Sample Java Program	48
+  System.out.println("Welcome! ");
+  
+4.12.2	Installing Java EE Tutorials through Java Update Tool	59
+  ./updatetool
+  ~/GlassFish_Server/glassfish/docs/Firstcup-2.0
+  ~/GlassFish_Server/glassfish/docs/javaee-tutorial
+  
+4.13	Setting Up a Drupal Website on Apache	60
+  sudo  apt-get  install php5-mysql
+  sudo  apt-get  install php5-gd
+  cd  ~/www
+  wget  http://drupal.org/files/projects/drupal-7.0.tar.gz
+  tar  -zxvf  drupal-7.0.tar.gz
+  mv  drupal-7.0  drupal
+  cd  drupal/sites/default
+  cp  default.settings.php  settings.php
+  chmod a+w settings.php
+  mysql  -u root  -p123456
+  create database drupal;
+  quit;
+  http://localhost/drupal/
+  chmod  a-w  ~/www/drupal/sites/default/settings.php
+  chmod  a-w  ~/www/drupal/sites/default
+  NSF Upcoming Due Dates
+  http://www.nsf.gov/rss/rss_www_funding_upcoming.xml
+  
+4.14	Networking between Host and VM	74
+  ifconfig
+  http://community.seidenberg.pace.edu/files/sici2011/ubuntu2.exe
+  
+5.2	Setting Up for the “Introduction to Cryptography” Lab	76
+  sudo  apt-get  install  gnupg-agent
+  
+6.3.1	Comparing HTTP GET and HTTP POST Requests	88
+  http://localhost:8080/demo/echoPost.html
+  gedit ~/tomcat/webapps/demo/echoPost.html
+  http://localhost:8080/demo/echoGet.html
+  gedit ~/tomcat/webapps/demo/echoGet.html
+  
+6.3.2	Observing HTTP Communications with Paros	89
+  cd  ~/paros
+  java   -jar paros.jar
+  http://localhost
+  
+6.3.3	Working with Cookies	91
+  tomcat-start
+  gedit ~/tomcat/webapps/demo/index.html
+  http://localhost:8080/demo
+  http://localhost:8080/testCookie
+  gedit ~/tomcat/webapps/testCookie/index.html
+  
+6.3.4	Submitting Data with HTML Form and Hyperlink	92
+  http://localhost:8080/tripler
+  gedit ~/tomcat/webapps/tripler/index.html
+  
+6.3.5	Validating Form Data with JavaScript	92
+  index.html
+  
+  <html>
+  <head><title>Echo Submitted Data</title></head>
+  <body>
+  <form  method="get"  action="/demo/echo">
+    Enter your name: <input   type="text"  name="user"/><br/><br/>
+    <input  type="submit"  value="Submit"/>
+    <input  type="reset"  value="Reset"/>
+  </form>
+  </body>
+  </html>
+
+  http://localhost:8080/test
+  
+  <html>
+  <head><title>Echo Submitted Data</title>
+  <script language="Javascript" type="text/javascript">
+  String.prototype.trim = function() {  
+    // remove string's leading spaces, then trailing spaces
+    return this.replace(/^\s*/, "").replace(/\s*$/, "");
+  }
+  function dataCheck(form) {
+    widget = form.user;
+    if (widget.value.trim() == "") {
+      alert("You must enter your name");
+      widget.focus();  // position the cursor in the field
+      widget.select(); // highlight the field
+      return false;
+    }
+    return true;
+  }
+  </script>
+  </head>
+  <body>
+  <form method="post" action="/demo/echo" 
+           onsubmit="return dataCheck(this)">
+    Enter your name: <input   type="text"  name="user"/><br/><br/>
+    <input  type="submit"  value="Submit"/>
+    <input  type="reset"  value="Reset"/>
+  </form>
+  </body>
+  </html>
+  
+6.3.6	Creating Your First JavaServer Page Web Application	94
+  welcomeJSP
+  index.html
+  
+  <html>
+  <body>
+  <h2>My First JSP Application</h2>
+  <form method="post" action="welcome.jsp">
+  Please enter your name: <input type="text" name="name"/>
+  <br/>
+  <input type="submit" value="OK"/>
+  </form>
+  </body>
+  </html>
+
+  welcome.jsp
+  
+  <html>
+  <body>
+  <%
+    String name = request.getParameter("name");
+  %>
+  <h2>Welcome, <%=name%></h2>
+  </body>
+  </html>
+
+  http://localhost:8080/welcomeJSP
+  /home/user/tomcat/work/Catalina/localhost/welcomeJSP/org/apache/jsp
+  
+6.3.7	Creating Your First Servlet Web Application	96
+  welcomeServlet
+  main.html
+  
+  <html>
+  <body>
+  <h2>My First Servlet Application</h2>
+  <form method="post" action="welcome">
+  Please enter your name: <input type="text" name="name"/>
+  <br/>
+  <input type="submit" value="OK"/>
+  </form>
+  </body>
+  </html>
+
+  WEB-INF/classes
+  Welcome.java
+
+  import javax.servlet.*;
+  import javax.servlet.http.*;
+  import java.io.*;
+  
+  public class Welcome extends HttpServlet {
+    public void doPost(HttpServletRequest request, 
+                       HttpServletResponse response)
+        throws IOException, ServletException {
+      String name = request.getParameter("name");
+      response.setContentType("text/html");
+      PrintWriter out = response.getWriter();
+      out.println("<html>");
+      out.println("<body>");
+      out.println("<h2>Welcome, " + name + "</h2>");
+      out.println("</body>");
+      out.println("</html>");
+    }
+  	 
+    public void doGet(HttpServletRequest request, 
+                      HttpServletResponse response)
+      throws IOException, ServletException {
+      doPost(request, response);
+    }
+  }
+
+  web.xml
+  
+  <web-app>
+    <servlet>
+      <servlet-name>welcome</servlet-name>
+      <servlet-class>Welcome</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+      <servlet-name>welcome</servlet-name>
+      <url-pattern>/welcome</url-pattern>
+    </servlet-mapping>
+  
+    <welcome-file-list>
+      <welcome-file>main.html</welcome-file>
+    </welcome-file-list>
+  </web-app>
+  
+  javac  Welcome.java
+  http://localhost:8080/welcomeServlet
+  jar  cvf  welcomeServlet.war  *
+  
+7.3.1	Development of a Java Web Service for Squaring an Integer	107
+  cd  ~/webServiceLab/java/server
+  more  SquareIntegerServer.java
+  javac     SquareIntegerServer.java   
+  SquareIntegerServer.jws
+  cd  ~/tomcat/webapps/axis
+  http://localhost:8080/axis/SquareIntegerServer.jws
+  http://localhost:8080/axis/SquareIntegerServer.jws?wsdl
+  
+7.3.2	Development of a Java Client Application for Consuming the Local Java Web Service	111
+  cd  ~/webServiceLab/java/client
+  http://localhost:8080
+  ./makeProxy.bat
+  java  org.apache.axis.wsdl.WSDL2Java http://localhost:8080/axis/SquareIntegerServer.jws?wsdl 
+  javac  SquareIntegerClient.java  -source 1.4
+  java  SquareIntegerClient   2
+  
+7.3.3	Running Web Service Client and Server on a LAN	113
+  ifconfig
+  java  org.apache.axis.wsdl.WSDL2Java http://192.168.0.240:8080/axis/SquareIntegerServer.jws?wsdl 
+
+7.3.4	Developing a Java Client Application to Consume a Public Remote ASP .NET Web Service	115
+  http://www.holidaywebservice.com/Holidays/US/Dates/USHolidayDates.asmx
+  http://www.holidaywebservice.com/Holidays/US/Dates/USHolidayDates.asmx?WSDL
+  cd   ~/webServiceLab/java/client
+  java  org.apache.axis.wsdl.WSDL2Java http://www.holidaywebservice.com/Holidays/US/Dates/USHolidayDates.asmx?WSDL 
+  http://download.oracle.com/javase/7/docs/api/
+  USHolidaysClient.java
+  
+  import com._27seconds.www.Holidays.US.Dates.*;
+import java.util.*;
+
+public class USHolidaysClient {
+  public static void main(String[] args) throws Exception {
+    int year = 0; // year
+    // The program expects to receive an integer (year) on command-line
+    // Program quits if there is no such integer
+    if (args.length == 1)  // there is one command-line argument 
+      year = Integer.parseInt(args[0]); // parse the string to an int
+    else {
+      System.out.println("Usage: java USHolidaysClient  [integer]");
+      System.exit(-1);  // terminate the program
+    }
+    // Get the proxy factory
+    USHolidayDatesLocator factory = new USHolidayDatesLocator();
+    // Generate the web service proxy object
+    USHolidayDatesSoap proxy = factory.getUSHolidayDatesSoap();
+    // Access the Web service
+    Calendar  cal;
+    cal = proxy.getEaster(year); 
+    cal.add(Calendar.DAY_OF_MONTH, 1);
+    System.out.println("Easter: \t" + (cal.get(Calendar.MONTH)+1) + 
+      "/" + cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.YEAR));
+    cal = proxy.getMothersDay(year); 
+    cal.add(Calendar.DAY_OF_MONTH, 1);
+    System.out.println("Mother's Day: \t" + (cal.get(Calendar.MONTH)+1) + 
+      "/" + cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.YEAR));
+    cal = proxy.getFathersDay(year); 
+    cal.add(Calendar.DAY_OF_MONTH, 1);
+    System.out.println("Father's Day: \t" + (cal.get(Calendar.MONTH)+1) + 
+      "/" + cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.YEAR));
+    cal = proxy.getThanksgivingDay(year); 
+    cal.add(Calendar.DAY_OF_MONTH, 1);
+    System.out.println("Thanksgiving: \t" + (cal.get(Calendar.MONTH)+1) + 
+      "/" + cal.get(Calendar.DATE) + "/" + cal.get(Calendar.YEAR));
+    cal = Calendar.getInstance();
+    System.out.println("Today: \t\t" + (cal.get(Calendar.MONTH)+1) + 
+      "/" + cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.YEAR));
+  }
+}
+
+  javac  USHolidaysClient.java  -source 1.4
+  java   USHolidaysClient  2010
+  
+8.3.1	Hashing Files with MD5 and SHA-1	123
+  file1.txt
+  This is the first file
+  This is line 2
+
+  file2.txt
+  This is the second file
+  This is line 2
+
+  sha1sum file1.txt
+  sha1sum file2.txt
+  
+  gedit  sha1sum.txt &
+  sha1sum  -c  sha1sum.txt
+  md5sum.txt
+  
+8.3.2	Symmetric Key Encryption/Decryption with GPG	125
+  gpg --symmetric file1.txt
+  cat  file1.txt.gpg
+  gpg -d file1.txt.gpg
+  gpg --symmetric --armor file1.txt
+  cat  file1.txt.asc
+  gpg --armor  -d file1.txt.asc
+  
+8.3.3	Public/Private Key Creation and Encryption/Decryption	127
+  gpg   --gen-key
+  gpg   --armor  --output  alice-pk  --export  alice@pace.edu
+  gpg   --import  alice-pk
+  gpg    --recipient  alice@pace.edu   --output  secret-to-alice   --encrypt  msg-to-alice
+  gpg   --output  msg-from-mike  --decrypt  secret-to-alice
+  sudo  adduser  alice
+  sudo  adduser  mike
+  sudo  visudo
+  alice   ALL=(ALL) NOPASSWD: ALL
+  mike  ALL=(ALL) NOPASSWD: ALL
+  sudo  login
+  gpg  --gen-key
+  gpg   --armor  --output  alice-pk  --export  alice@pace.edu
+  more  alice-pk
+  sudo cp alice-pk /home/mike
+  gpg  --import alice-pk
+  gpg  --edit-key  alice@pace.edu
+  fpr
+  sign
+  check
+  quit
+  cat   >  msg-to-alice
+  Alice’s secret message
+  gpg    --recipient  alice@pace.edu   --output  secret-to-alice   --encrypt  msg-to-alice
+  more  secret-to-alice
+  sudo  cp  secret-to-alice  /home/alice
+  gpg   --output  msg-from-mike  --decrypt  secret-to-alice
+  more  msg-from-mike
+  
+9.3.1	Reviewing Java Security Framework	135
+  cd   ~/JavaSecurityLab
+  gedit  GetProperties.java
+  javac   GetProperties.java
+  java  GetProperties
+  
+9.3.2	Creating Public/Private Keys and Digital Certificates	136
+  cd   ~/JavaSecurityLab
+  keytool -genkey -alias PaceKey -keypass Seidenberg -keystore PaceKeystore  -storepass  PaceUniversity
+  keytool -export -keystore PaceKeystore -alias PaceKey -file  PaceKey.cer
+  keytool -printcert -file PaceKey.cer
+  keytool  -import  -alias  Pace  -file PaceKey.cer  -keystore  receiverKeystore
+  
+9.3.3	Ensuring Data Confidentiality with Cryptography	139
+  cd  ~/ JavaSecurityLab/cipher-des
+  javac  S_DES_File.java
+  java  S_DES_File
+  java  S_DES_File  GettysburgAddress.txt  secret  1010101010
+  more  secret
+  java  S_DES_File  secret  GettysburgAddress2.txt  1010101010  decode
+  more  GettysburgAddress2.txt
+  
+9.3.4	Securing File Exchange with Java Security Utilities	139
+  cd  ~/JavaSecurityLab
+  more   GettysburgAddress.txt
+  jar  cvf  doc.jar  GettysburgAddress.txt
+  7z  l  doc.jar
+  jarsigner  -keystore  PaceKeystore  -signedjar  signedDoc.jar  doc.jar  PaceKey
+  jarsigner   -verify  -verbose  -keystore  receiverKeystore  signedDoc.jar
+  mkdir  temp
+  cp  signedDoc.jar  temp
+  cd  temp
+  jar  xf  signedDoc.jar
+  
+9.3.5	Granting Special Rights to Applets Based on Code Location	141
+  cd  ~/JavaSecurityLab/applet1
+  gedit  WriteFile.java
+  javac  WriteFile.java
+  gedit appletWrite.html
+  file:///home/user/JavaSecurityLab/applet1
+  ${user.home}/data.txt
+  .java.policy
+  more   ~/.java.policy
+  more  ~/data.txt
+  appletviewer    appletWrite.html
+  
+9.3.6	Granting Special Rights to Applets Based on Code Signing	149
+  cd  ~/JavaSecurityLab/applet2
+  gedit  WriteFile.java
+  javac  WriteFile.java
+  jar  cvf   WriteFile.jar  WriteFile.class
+  7z  l  WriteFile.jar
+  jarsigner  -keystore  ../PaceKeystore  -signedjar  signedWriteFile.jar  WriteFile.jar  PaceKey
+  7z  l  signedWriteFile.jar
+  gedit appletWrite2.html
+  appletviewer  appletWrite2.html
+  policytool
+  ${user.home}/JavaSecurityLab/receiverKeystore
+  ${user.home}/data.txt
+  more  ~/.java.policy
+  appletviewer  appletWrite2.html
+  
+9.3.7	Creating a Certificate Chain to Implement a Trust Chain	156
+  cd   ~/JavaSecurityLab/cert-chain
+  javac SignCertificate.java
+  more  WriteFile.java
+  javac  WriteFile.java
+  jar  cvf  WriteFile.jar  WriteFile.class
+  keytool -genkey -alias CA -keypass 123456 -keystore keystore  -storepass  123456  -validity 365 -keyalg RSA
+  keytool -genkey -alias SchoolKey -keypass 123456 -keystore keystore  -storepass  123456  -validity 365 -keyalg RSA
+  Lab
+  Seidenberg School
+  Pace University
+  New York
+  java  SignCertificate  keystore  CA SchoolKey  SchoolKeySigned
+  keytool -export -alias SchoolKeySigned -keystore keystore -file SchoolKeySigned.cert
+  keytool -import -alias SchoolKey -keystore keystore -file SchoolKeySigned.cert
+  keytool -list -v -keystore keystore
+  jarsigner  -keystore  keystore  -signedjar  signedWriteFile.jar  WriteFile.jar  CA
+  jarsigner  -keystore  keystore  -signedjar  signedWriteFile.jar  WriteFile.jar  SchoolKey
+  
+9.3.8	Protecting Your Computer from Insecure Java Applications	161
+  cd   ~/JavaSecurityLab
+  gedit  GetProperties.java
+  javac   GetProperties.java
+  java  GetProperties
+  java  -Djava.security.manager GetProperties
+  more   my.java.policy
+  java -Djava.security.manager -Djava.security.policy=my.java.policy GetProperties
+  
+
+9.3.9	Securing File Exchange with Java Security API and Newly Created Keys	162
+  cd  ~/JavaSecurityLab/JavaSecurityAPI/use-new-key
+  gedit   GenerateSignature.java &
+  javac  GenerateSignature.java
+  gedit   VerifySignature.java &
+  javac  VerifySignature.java
+  java  GenerateSignature  GettysburgAddress.txt
+  java  VerifySignature  public-key  signature  GettysburgAddress.txt
+  
+9.3.10	Securing File Exchange with Java Security API and Keys in Files	165
+  cd  ~/JavaSecurityLab/JavaSecurityAPI/key-in-file
+  gedit   GenerateKeys.java &
+  javac  GenerateKeys.java
+  gedit   GenerateSignature2.java &
+  javac  GenerateSignature2.java
+  gedit   VerifySignature.java &
+  javac  VerifySignature.java
+  java  GenerateKeys
+  java  GenerateSignature2 private-key GettysburgAddress.txt
+  java  VerifySignature  public-key  signature  GettysburgAddress.txt
+  
+9.3.11	Securing File Exchange with Java Security API and Keys in a Keystore	166
+  cd  ~/JavaSecurityLab/JavaSecurityAPI/key-in-keystore
+  gedit   GenerateSignature3.java &
+  javac  GenerateSignature3.java
+  gedit   VerifySignature2.java &
+  javac  VerifySignature2.java
+  java  GenerateSignature3  GettysburgAddress.txt
+  java  VerifySignature2  certificate  signature  GettysburgAddress.txt
+  
