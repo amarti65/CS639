@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Lab_1_Profile</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="full_name">Anthony \n Martini</string>
+    <string name="course_schedule">CS639 \nCS612 \nCS6623</string>
+
+</resources>

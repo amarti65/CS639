@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".Main$PlaceholderFragment">
+    <LinearLayout
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:src="@drawable/ic_launcher"
+            android:layout_weight="1" />
+        <TextView
+            android:text="@string/full_name"
+            android:layout_width="117dp"
+            android:layout_height="49dp"
+            android:layout_toEndOf="@+id/linearLayout"
+            android:layout_alignTop="@+id/linearLayout"
+            android:layout_toRightOf="@+id/linearLayout"
+            android:gravity="center|top"
+            android:layout_marginTop="56dp"
+            android:id="@+id/name"
+            android:layout_gravity="bottom"
+            android:paddingBottom="0dp"
+            android:phoneNumber="false"
+            android:layout_weight="1"
+            style="@style/AppTheme" />
+        <TextView
+            android:text="@string/course_schedule"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/linearLayout"
+            android:layout_alignTop="@+id/linearLayout"
+            android:layout_toRightOf="@+id/linearLayout"
+            android:layout_marginTop="56dp"
+            android:gravity="center"
+            android:id="@+id/courses"
+            android:layout_gravity="center_horizontal|bottom"
+            style="@style/AppTheme"
+            android:password="false"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
