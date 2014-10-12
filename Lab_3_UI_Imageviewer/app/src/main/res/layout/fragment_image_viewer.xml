@@ -21,7 +21,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="@string/preview_string"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:onClick="exampleToast"/>
 
     <Button
         android:id="@id/next"
@@ -30,7 +31,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:text="@string/next_str"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:onClick="exampleToast"/>
 
     <TextView
         android:id="@+id/text_view"

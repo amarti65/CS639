@@ -1,16 +1,16 @@
 package com.example.anthony.lab_3_ui_imageviewer;
 
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
-
+import android.widget.Toast;
 
 
 public class ImageViewer extends Activity {
@@ -23,7 +23,21 @@ public class ImageViewer extends Activity {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
+
+
         }
+
+
+
+
+    }
+
+    public void exampleToast(View view)
+    {
+        Toast toast = Toast.makeText(this, "Cheers", Toast.LENGTH_SHORT);
+        toast.show();
+
+        Log.i("ImageViewer","Message");
     }
 
 
@@ -56,9 +70,11 @@ public class ImageViewer extends Activity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_image_viewer, container, false);
             return rootView;
         }
+
+
     }
 }
