@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_alignBottom="@+id/next"
     android:layout_alignParentTop="true">
-    tools:context=".ImageViewer$PlaceholderFragment">
+   >
 
     <View
         android:layout_width="match_parent"
@@ -21,8 +21,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="@string/preview_string"
-        android:textColor="@android:color/white"
-        android:onClick="exampleToast"/>
+        android:textColor="@android:color/white"/>
 
     <Button
         android:id="@id/next"
@@ -31,8 +30,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:text="@string/next_str"
-        android:textColor="@android:color/white"
-        android:onClick="exampleToast"/>
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/text_view"
@@ -43,16 +41,15 @@
         android:layout_toRightOf="@id/prev"
         android:layout_alignTop="@id/prev"
         android:layout_alignBottom="@id/prev"
-        android:text="Cats, Dogs and Birds"
         android:textColor="@android:color/white"/>
 
 
     <ImageView
-
+    android:id="@+id/imageViewLens"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/prev"
-        android:scaleType="centerCrop"
-        android:src="@drawable/one"/>
+
+       />
 
 </RelativeLayout>
