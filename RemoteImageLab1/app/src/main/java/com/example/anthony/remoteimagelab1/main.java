@@ -1,6 +1,7 @@
-package com.example.anthony.asynchinsert;
+package com.example.anthony.remoteimagelab1;
 
 import android.app.Activity;
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,10 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.os.Build;
 
 
 
-public class Main extends Activity {
+public class main extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +23,6 @@ public class Main extends Activity {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
-
         }
     }
 
@@ -60,12 +61,4 @@ public class Main extends Activity {
             return rootView;
         }
     }
-
-
-
-
-
 }
-
-
-
