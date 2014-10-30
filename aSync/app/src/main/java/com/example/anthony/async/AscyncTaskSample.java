@@ -34,6 +34,7 @@ public class AscyncTaskSample extends AsyncTask<String, Integer,Bitmap>
             Log.e("Image", "Failed to load image", e);
             Log.e("error", e.getMessage());
         }
+        return null;
     }
 
     @Override
