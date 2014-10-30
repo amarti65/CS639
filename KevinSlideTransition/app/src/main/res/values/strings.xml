@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="plainBlue">#ff000000</color>
+    <color name="darkBlue">#ff000000</color>
+    <string name="app_name">KevinSlideTransition</string>
+    <string name="salutations">I used to be a button</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_reference">KevinSlideTransition</string>
+    <string name="slide_left">Slide to the left!</string>
+
+</resources>
