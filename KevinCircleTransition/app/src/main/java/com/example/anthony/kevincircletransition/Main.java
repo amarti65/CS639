@@ -29,7 +29,6 @@ public class Main extends Activity {
         setContentView(R.layout.fragment_main);
 
         //make a button View
-        final View button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
 
             View myView = findViewById(R.id.firstId);
